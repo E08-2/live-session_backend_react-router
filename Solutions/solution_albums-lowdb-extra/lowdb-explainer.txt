@@ -1,0 +1,17 @@
+Lowdb explainer:
+
+*One sentence summary*:
+
+- You can use lowdb in your server to read data from, and write data to, the "db.json" file, which lives in the "data" directory of your "backend" repo.
+
+*More details*:
+
+- After you have successfully imported lowdb, you can call "await db.read()" to get the current data from the "data/db.json" file. Remember: this method is asynchronous!
+- After this, you can use the db object's "data" property (db.data) to access a copy of this data.
+- If you want to update your data in "index.js", you can change the value of db.data (in our example, we pushed a new object into its "albums" array).
+- But wait! Don't forget that after you change db.data, you should also call the asynchronous method db.write() to write your changes to the "data/db.json" file itself.
+- And finally... always send back a response once you are finished dealing with any HTTP request. ;-)
+
+*Bonus information*:
+
+- When you call the asynchronous function db.write() to write your changes to the db.json file, it actually restarts your server when it is done. This means that when the server restarts it automatically runs "await db.read()" again, so your db.data object gets the newest version of your data.
